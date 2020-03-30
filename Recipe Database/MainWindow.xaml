@@ -1,0 +1,421 @@
+﻿<Window x:Class="Recipe_Database.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Recipe_Database"
+        mc:Ignorable="d"
+        DataContext="{Binding Path=Main, Source={StaticResource Locator}}"
+        Title="Recipe Database" Height="600" Width="800">
+    <Grid x:Name="MainGrid" Margin="10">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="NewRecipeGrid">
+                <VisualState x:Name="ShowAddNewRecipeForm">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="AddNewRecipeGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="HideAddNewRecipeForm">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="AddNewRecipeGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="ShowViewRecipeForm">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ViewRecipeGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="HideViewRecipeForm">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ViewRecipeGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="ShowEditRecipeForm">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="EditRecipeGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="HideEditRecipeForm">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="EditRecipeGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="ShowDeleteConfirmation">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="DeleteConfirmationGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="HideDeleteConfirmation">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="DeleteConfirmationGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="ShowCloseEditConfirmation">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="EditRecipeGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CloseEditConfirmationGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="HideCloseEditConfirmation">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="EditRecipeGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CloseEditConfirmationGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="ShowCloseSaveNewConfirmation">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="AddNewRecipeGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CloseSaveNewConfirmationGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="HideCloseSaveNewConfirmation">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="AddNewRecipeGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CloseSaveNewConfirmationGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="350"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Recipe List" FontSize="20"/>
+                <ListBox ItemsSource="{Binding RecipeList}" SelectedItem="{Binding SelectedRecipe}" FontSize="18" Grid.Row="1" Grid.Column="0" SelectionChanged="ListBox_SelectionChanged" MouseDoubleClick="ListBox_MouseDoubleClick"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="3">
+                    <TextBlock Text="Type of Dish:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding FilterTypeList}" SelectedValue="{Binding SelectedFilterType, Mode=TwoWay}" VerticalAlignment="Center" SelectedIndex="0" FontSize="20" Width="140" SelectionChanged="ComboBox_SelectionChanged"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Button Content="View Recipe" Command="{Binding ViewRecipeButtonCommand}" FontSize="20" Width="160" Height="30" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Button Content="Edit Recipe" Command="{Binding EditRecipeButtonCommand}" FontSize="20" Width="160" Height="30"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Button Content="Delete Recipe" Command="{Binding DeleteRecipeButtonCommand}" FontSize="20" Width="160" Height="30"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Button Content="Add New Recipe" Command="{Binding AddNewRecipeButtonCommand}" FontSize="20" Width="160" Height="30" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <TextBlock Text="Enter Search Term:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"/>
+                <TextBox Text="{Binding SearchText, Mode=TwoWay}" FontSize="20" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1"/>
+                <Button Content="Display All" Command="{Binding DisplayAllButtonCommand}" FontSize="20" Width="130" Height="30" Grid.Row="6" Grid.Column="0"/>
+                <Button Content="Search" Command="{Binding SearchButtonCommand}"  FontSize="20" Width="130" Height="30" Grid.Row="6" Grid.Column="1"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="AddNewRecipeGrid" Background="#7F000000" Visibility="Collapsed">
+            <Border Background="AliceBlue">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Add New Recipe" FontSize="20" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Name:" FontSize="18" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"/>
+                    <TextBox Text="{Binding NewRecipeName, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,2"/>
+                    <TextBlock Text="Type:" FontSize="18" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"/>
+                    <ComboBox ItemsSource="{Binding RecipeTypeList}" SelectedValue="{Binding NewRecipeType}" Grid.Column="1" Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="10,2"/>
+                    <TextBlock Text="Origin:" FontSize="18" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"/>
+                    <TextBox Text="{Binding NewRecipeOrigin, Mode=TwoWay}" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,2"/>
+                    <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Ingredients:" FontSize="18" Grid.Row="0" Grid.Column="0" Margin="10,0"/>
+                        <TextBox Text="{Binding NewRecipeIngredients, Mode=TwoWay}" Grid.Row="1" Grid.RowSpan="3" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="10,0"/>
+                        <TextBlock Text="Procedure:" FontSize="18" Grid.Row="0" Grid.Column="1" Margin="10,0"/>
+                        <TextBox Text="{Binding NewRecipeProcedure, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="10,0"/>
+                        <TextBlock Text="Notes:" FontSize="18" Grid.Column="1" Grid.Row="2" Margin="10,0"/>
+                        <TextBox Text="{Binding NewRecipeNotes, Mode=TwoWay}" Grid.Column="1" Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="10,0"/>
+                    </Grid>
+                    <Grid Grid.Row="5" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="Save" Command="{Binding SaveNewRecipeButtonCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" Width="85" Margin="10"/>
+                        <Button Grid.Column="1" Content="Cancel" Command="{Binding CancelNewRecipeButtonCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="85" Margin="10"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid x:Name="EditRecipeGrid" Background="#7F000000" Visibility="Collapsed">
+            <Border Background="AliceBlue">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Edit Recipe" FontSize="20" VerticalAlignment="Center" Grid.ColumnSpan="4" HorizontalAlignment="Center"/>                    
+                    <TextBlock Text="Name:" FontSize="18" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"/>
+                    <TextBox Text="{Binding EditRecipeName, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,2"/>
+                    <TextBlock Text="Type:" FontSize="18" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"/>
+                    <ComboBox ItemsSource="{Binding RecipeTypeList}" SelectedValue="{Binding EditRecipeType}" Grid.Column="1" Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="10,2"/>
+                    <TextBlock Text="Origin:" FontSize="18" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"/>
+                    <TextBox Text="{Binding EditRecipeOrigin, Mode=TwoWay}" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,2"/>
+                    <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Ingredients:" FontSize="18" Grid.Row="0" Grid.Column="0" Margin="10,0"/>
+                        <TextBox Text="{Binding EditRecipeIngredients, Mode=TwoWay}" Grid.Row="1" Grid.RowSpan="3" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="10,0"/>
+                        <TextBlock Text="Procedure:" FontSize="18" Grid.Row="0" Grid.Column="1" Margin="10,0"/>
+                        <TextBox Text="{Binding EditRecipeProcedure, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="10,0"/>
+                        <TextBlock Text="Notes:" FontSize="18" Grid.Column="1" Grid.Row="2" Margin="10,0"/>
+                        <TextBox Text="{Binding EditRecipeNotes, Mode=TwoWay}" Grid.Column="1" Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="10,0"/>
+                    </Grid>
+                    <Grid Grid.Row="5" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="Save" Command="{Binding SaveEditRecipeButtonCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" Width="85" Margin="10"/>
+                        <Button Grid.Column="1" Content="Cancel" Command="{Binding CancelEditRecipeButtonCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="85" Margin="10"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid x:Name="ViewRecipeGrid" Background="#7F000000" Visibility="Collapsed">
+            <Border Background="AliceBlue">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="View Recipe" FontSize="20" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Name:" FontSize="18" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"/>
+                    <TextBox Text="{Binding ViewRecipeName, Mode=TwoWay}" IsReadOnly="True" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,2"/>
+                    <TextBlock Text="Type:" FontSize="18" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"/>
+                    <TextBox Text="{Binding ViewRecipeType, Mode=TwoWay}" IsReadOnly="True" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,2"/>
+                    <TextBlock Text="Origin:" FontSize="18" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="10,0"/>
+                    <TextBox Text="{Binding ViewRecipeOrigin, Mode=TwoWay}" IsReadOnly="True" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,2"/>
+                    <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Ingredients:" FontSize="18" Grid.Row="0" Grid.Column="0" Margin="10,0"/>
+                        <TextBox Text="{Binding ViewRecipeIngredients, Mode=TwoWay}" IsReadOnly="True" Grid.Row="1" Grid.RowSpan="3" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="10,0"/>
+                        <TextBlock Text="Procedure:" FontSize="18" Grid.Row="0" Grid.Column="1" Margin="10,0"/>
+                        <TextBox Text="{Binding ViewRecipeProcedure, Mode=TwoWay}" IsReadOnly="True" Grid.Column="1" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="10,0"/>
+                        <TextBlock Text="Notes:" FontSize="18" Grid.Column="1" Grid.Row="2" Margin="10,0"/>
+                        <TextBox Text="{Binding ViewRecipeNotes, Mode=TwoWay}" IsReadOnly="True" Grid.Column="1" Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="10,0"/>
+                    </Grid>
+                    <Button Grid.ColumnSpan="2" Grid.Row="5" Content="Close" Command="{Binding CloseViewRecipeButtonCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="85" Margin="10"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid x:Name="CloseEditConfirmationGrid" Background="#7F000000" Visibility="Collapsed">
+            <Border Background="AliceBlue" Width="450" Height="100">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Close Confirmation" FontSize="20"   VerticalAlignment="Center" Grid.ColumnSpan="4" HorizontalAlignment="Center" />
+                    <TextBlock Text="Are you sure you want to discard your changes?" FontSize="18" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="10,0"/>
+                    <Button Grid.Column="0" Grid.Row="2" Content="Continue" Command="{Binding ContinueCloseEditButtonCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" Width="85" Margin="10,10"/>
+                    <Button Grid.Column="1" Grid.Row="2" Content="Cancel" Command="{Binding CancelCloseEditButtonCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Width="85" Margin="10,10"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid x:Name="CloseSaveNewConfirmationGrid" Background="#7F000000" Visibility="Collapsed">
+            <Border Background="AliceBlue" Width="450" Height="100">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Close Confirmation" FontSize="20"   VerticalAlignment="Center" Grid.ColumnSpan="4" HorizontalAlignment="Center" />
+                    <TextBlock Text="Are you sure you want to discard your changes?" FontSize="18" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="10,0"/>
+                    <Button Grid.Column="0" Grid.Row="2" Content="Continue" Command="{Binding ContinueCloseSaveNewButtonCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" Width="85" Margin="10,10"/>
+                    <Button Grid.Column="1" Grid.Row="2" Content="Cancel" Command="{Binding CancelCloseSaveNewButtonCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Width="85" Margin="10,10"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid x:Name="DeleteConfirmationGrid" Background="#7F000000" Visibility="Collapsed">
+            <Border Background="AliceBlue" Width="450" Height="100">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Delete Confirmation" FontSize="20"   VerticalAlignment="Center" Grid.ColumnSpan="4" HorizontalAlignment="Center" />
+                    <TextBlock Text="Are you sure you want to delete this recipe?" FontSize="18" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="10,0"/>
+                    <Button Grid.Column="0" Grid.Row="2" Content="Continue" Command="{Binding ContinueDeleteButtonCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" Width="85" Margin="10,10"/>
+                    <Button Grid.Column="1" Grid.Row="2" Content="Cancel" Command="{Binding CancelDeleteButtonCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Width="85" Margin="10,10"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

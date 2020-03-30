@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipe Database", "Recipe Database\Recipe Database.csproj", "{7A81C78F-5F57-4B37-8735-D51BC8C36EA5}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RecipeDBSetup", "RecipeDBSetup\RecipeDBSetup.vdproj", "{8BEED588-2154-4CB7-8D2A-82CC52B637EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A81C78F-5F57-4B37-8735-D51BC8C36EA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A81C78F-5F57-4B37-8735-D51BC8C36EA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A81C78F-5F57-4B37-8735-D51BC8C36EA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A81C78F-5F57-4B37-8735-D51BC8C36EA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BEED588-2154-4CB7-8D2A-82CC52B637EB}.Debug|Any CPU.ActiveCfg = Debug
+		{8BEED588-2154-4CB7-8D2A-82CC52B637EB}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F36D2B5D-B6CC-42D6-9BAB-3C7842B44C16}
+	EndGlobalSection
+EndGlobal
